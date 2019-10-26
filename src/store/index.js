@@ -15,6 +15,7 @@ const reducerFetch = (state = {fetchData: []}, action) => {
     return state
 };
 
-const store = createStore(combineReducers({inputValue: reducerInput, fetchData: reducerFetch}));
+const store = createStore(combineReducers({inputValue: reducerInput, fetchData: reducerFetch}),
+    compose(applyMiddleware(...[thunk]), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 export default store
