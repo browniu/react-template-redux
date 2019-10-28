@@ -16,6 +16,15 @@ export const mapDispatchToProps = dispatch => {
                 .then(json => json);
             const action = {type: 'FETCH', value: result};
             dispatch(action)
-        }
+        },
+        fetchThunk: () => dispatch(async (dispatch) => {
+            const result = await fetch('https://jsonplaceholder.typicode.com/todos/2')
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json)
+                    return json
+                })
+            dispatch({type: 'FETCH', value: result})
+        })
     }
 };
